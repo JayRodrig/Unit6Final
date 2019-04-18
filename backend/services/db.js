@@ -1,5 +1,7 @@
+// NPM MODULES
 const pgp = require('pg-promise');
 
+// IIFE FUNCTION RETURING DB CONNECTION
 const getDbConn = (() => {
     let dbConn = null;
     return dbAddr => {
