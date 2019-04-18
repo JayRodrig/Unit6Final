@@ -1,0 +1,23 @@
+{
+  "name": "tvshowwatchlistbe",
+  "version": "1.0.0",
+  "description": "An express server containing all routes to supply and receive data from the tv_show_watchlist app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "J",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "pg-promise": "^8.6.5"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.3",
+    "jest": "^24.7.1",
+    "nodemon": "^1.18.11",
+    "supertest": "^4.0.2"
+  }
+}
