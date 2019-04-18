@@ -20,7 +20,9 @@ const getShowByUser = user_id => getDbConn(dbAddr).any(
 );
 
 const getShow = id => getDbConn(dbAddr).one(
-    `select * from shows where shows.id = $[id]`, {id,}
+    `select shows.id AS show_id, shows.title, shows.img_url, shows.user_id, 
+    shows.genre_id, genres.genre_name from shows join genres 
+    on shows.genre_id = genres.id where shows.id = $[id]`, {id,}
 );
 
 const postShow = (title, img_url, user_id, genre_id) => 
