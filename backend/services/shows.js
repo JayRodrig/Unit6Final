@@ -17,7 +17,7 @@ const getShowByUser = user_id => getDbConn(dbAddr).any(
     {user_id,}
 );
 
-const getShow = id => getDbConn(dbAddr).any(
+const getShow = id => getDbConn(dbAddr).one(
     `select * from shows where shows.id = $[id]`, {id,}
 );
 

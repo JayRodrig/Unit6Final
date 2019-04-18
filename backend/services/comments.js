@@ -16,5 +16,5 @@ const postComment = (comment_body, user_id, show_id) =>
 
 module.exports = {
     getComments,
-    psotComment,
+    postComment,
 }

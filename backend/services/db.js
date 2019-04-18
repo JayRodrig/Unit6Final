@@ -6,7 +6,7 @@ const getDbConn = (() => {
     let dbConn = null;
     return dbAddr => {
         if (!dbConn) {
-            pgp({})(dbAddr);
+            dbConn = pgp({})(dbAddr);
         }
         return dbConn;
     } 
