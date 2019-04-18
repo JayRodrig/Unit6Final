@@ -1,26 +1,24 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+// NPM MODULES
+import React, {Component,} from 'react';
+import {Route,} from 'react-router-dom';
+
+// CONTAINERS
+import Home from './containers/home';
+import Users from './containers/users';
+import UserProfile from './containers/user_profile';
+
+// COMPONENTS
+import NavBar from './components/navbar';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <>
+        <NavBar />
+        <Route path='/' exact component={Home} />
+        <Route path='/users' exact component={Users} />
+        <Route path='/users/:user_id' exact component={UserProfile} />
+      </>
     );
   }
 }

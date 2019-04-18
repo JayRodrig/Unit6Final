@@ -13,7 +13,9 @@ const getShowByGenre = genre_id => getDbConn(dbAddr).any(
 );
 
 const getShowByUser = user_id => getDbConn(dbAddr).any(
-    `select * from shows where shows.user_id = $[user_id]`, 
+    `select shows.id AS show_id, shows.title, shows.img_url, shows.user_id, 
+    shows.genre_id, genres.genre_name from shows join genres 
+    on shows.genre_id = genres.id where shows.user_id = $[user_id]`, 
     {user_id,}
 );
 
