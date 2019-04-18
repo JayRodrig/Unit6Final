@@ -4,7 +4,8 @@ const {dbAddr,} = require('./config');
 
 // DB SERVICE FUNCTIONS
 const getComments = show_id => getDbConn(dbAddr).any(
-    `select * from comments where comments.show_id = $[show_id]`,
+    `select * from comments join users on comments.user_id = users.id
+    where comments.show_id = $[show_id]`,
     {show_id}
 );
 

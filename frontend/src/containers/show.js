@@ -9,6 +9,7 @@ export default class Show extends Component {
     state = {
         loggedIn: null,
         show: null,
+        comments: [],
     }
 
     componentDidMount = () => this.loadShowData();
@@ -28,13 +29,46 @@ export default class Show extends Component {
                         loggedIn: user,
                     }));                    
             }));
+
+        axios.get(`http://localhost:11235/comment/${id}`)
+            .then(response => response.data)
+            .then(response => response.data)
+            .then(comments => this.setState(state => ({
+                comments: state.comments.concat(comments),
+            })));
+    }
+
+    renderComments = () => {
+        const {comments,} = this.state;
+        if (comments.length === 0) {
+            return(
+                <h1 className='text-center'>No Comments</h1>
+            )
+        } else {
+            return(
+                <div className="card" style={{"width": "100%"}}>
+                    <div className="card-header text-center font-weight-bold bg-dark text-white">
+                        Comments
+                    </div>
+                    <ul className="list-group list-group-flush">
+                        {
+                            comments.map((e, i) => {
+                                return(
+                                    <li className="list-group-item" key={i}><span className='font-weight-bold'>{e.username}:</span> {e.comment_body}</li>
+                                )
+                            })
+                        }
+                    </ul>
+                </div>
+            )
+        }
     }
 
     render() {
         return(
             <>
                 {
-                    (!this.state.show) ? <h1>Loading...</h1> : 
+                    (!this.state.loggedIn) ? <h1>Loading...</h1> : 
                     <div className='container'>
                         <div className='row my-5 border-bottom'>
                             <div className='col-4'>
@@ -49,10 +83,28 @@ export default class Show extends Component {
                                 </div>
                             </div>
                             <div className='col-12 my-2 text-center'>
-                                <h4>Being watch by Someone</h4>
+                                <h4>Being watched by {this.state.loggedIn.username}</h4>
                             </div>
                         </div>
 
+                        <div className='row my-5' style={{justifyContent: 'center'}}>
+                            <div className='col-6'>
+                                <div className="input-group mb-3">
+                                    <input type="text" className="form-control" placeholder="Comment..." />
+                                    <div className="input-group-append">
+                                        <button className="btn btn-outline-secondary bg-dark text-white" type="button" id="button-addon2">Comment</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='row my-5' style={{justifyContent: 'center'}}>
+                            <div className='col-6'>
+                                {
+                                    this.renderComments()
+                                }
+                            </div>
+                        </div>
                     </div>
                 }
             </>
