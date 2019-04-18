@@ -26,7 +26,7 @@ const getUser = (request, response) => {
     UserServices.getUser(id)
         .then(data => {
             response.status(200).json({
-                msg: `Successfully retrieved users`,
+                msg: `Successfully retrieved user`,
                 data,
             });
         })
@@ -43,7 +43,7 @@ const postUser = (request, response) => {
     UserServices.postUser(username)
         .then(data => {
             response.status(200).json({
-                msg: `Successfully retrieved users`,
+                msg: `Successfully posted user`,
                 data,
             });
         })
@@ -59,9 +59,9 @@ const postUser = (request, response) => {
 const UserRouter = () => {
     const router = express.Router();
 
-    router.get('/', getUsers)
-    router.get('/:id', getUser)
-    router.post('/', postUser)
+    router.get('/', getUsers);
+    router.get('/:id', getUser);
+    router.post('/', postUser);
 
     return router;
 }

@@ -3,8 +3,9 @@ const {getDbConn,} = require('./db');
 const {dbAddr,} = require('./config');
 
 // DB SERVICE FUNCTIONS
-const getComments = () => getDbConn(dbAddr).any(
-    `select * from comments`
+const getComments = show_id => getDbConn(dbAddr).any(
+    `select * from comments where comments.show_id = $[show_id]`,
+    {show_id}
 );
 
 const postComment = (comment_body, user_id, show_id) => 
