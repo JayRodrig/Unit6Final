@@ -4,6 +4,7 @@
   "description": "An express server containing all routes to supply and receive data from the tv_show_watchlist app",
   "main": "index.js",
   "scripts": {
+    "start:local": "$(npm bin)/nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "J",
