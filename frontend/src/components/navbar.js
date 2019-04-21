@@ -18,7 +18,7 @@ export default props => {
                         <Link className="nav-link text-white" to="/shows">TV Shows</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link text-white" to="#">Genres</Link>
+                        <Link className="nav-link text-white" to="/">Post Show</Link>
                     </li>
                 </ul>
             </div>
