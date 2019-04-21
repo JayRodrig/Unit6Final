@@ -4,7 +4,8 @@ const {dbAddr,} = require('./config');
 
 // DB SERVICE FUNCTIONS
 const getShows = () => getDbConn(dbAddr).any(
-    `select * from shows`
+    `select shows.id, shows.title, shows.img_url, shows.user_id, shows.genre_id, users.username 
+    from shows join users on shows.user_id = users.id`
 );
 
 const getShowByGenre = genre_id => getDbConn(dbAddr).any(

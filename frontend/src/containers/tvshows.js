@@ -7,7 +7,7 @@ import axios from 'axios';
 
 export default class TvShows extends Component {
     state = {
-
+        shows: null,
     }
 
     componentDidMount = _ => this.loadShows();
@@ -16,7 +16,23 @@ export default class TvShows extends Component {
         axios.get('http://localhost:11235/show/')
             .then(response => response.data)
             .then(response => response.data)
-            .then(console.log);
+            .then(shows => {
+                console.log(shows);
+                const showsObj = {};
+                for (let show of shows) {
+                    if (!showsObj[show.title]) {
+                        showsObj[show.title] = [show.user_id];
+                    } else {
+                        showsObj[show.title].push(show.user_id);
+                    }
+                }
+                
+                console.log(Object.values(showsObj));
+
+                // this.setState({
+                //     shows: showsObj,
+                // });
+            });
     }
 
     render() {
