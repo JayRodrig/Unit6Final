@@ -44,7 +44,7 @@ export default class UserProfile extends Component {
                                     color: 'black'
                                 }}>
                                     <div>
-                                        <img src={e.img_url} alt={e.title} />
+                                        <img src={e.img_url} alt={e.title} style={{maxWidth: 400, maxHeight: 550}} />
                                         <h3 className='my-1'>{e.title}</h3>
                                         <h5 className='my-1'>{e.genre_name}</h5>
                                     </div>
