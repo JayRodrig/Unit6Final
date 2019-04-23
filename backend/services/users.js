@@ -11,9 +11,9 @@ const getUser = id => getDbConn(dbAddr).one(
     `select * from users where users.id = $[id]`, {id,}
 );
 
-const postUser = userName => getDbConn(dbAddr).oneOrNone(
+const postUser = username => getDbConn(dbAddr).oneOrNone(
     `insert into users (username) values ($[username]) returning id`, 
-    {username}
+    {username,}
 );
 
 module.exports = {
