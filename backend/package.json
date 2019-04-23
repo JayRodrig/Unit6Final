@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:local": "$(npm bin)/nodemon index.js",
-    "test": "$(npm bin)/jest"
+    "test": "$(npm bin)/jest --coverage"
   },
   "author": "J",
   "license": "ISC",
