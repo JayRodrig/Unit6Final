@@ -33,27 +33,10 @@ test('getApp tests', done => {
     const app = getApp();
     expect(app).toEqual(mockApp);
     expect(mockUse.mock.calls.length).toBe(6);
+    expect(mockUse.mock.calls[0][0]).toBe('test');
+    expect(UserRouter.mock.calls.length).toBe(1);
+    expect(GenreRouter.mock.calls.length).toBe(1);
+    expect(ShowRouter.mock.calls.length).toBe(1);
+    expect(CommentRouter.mock.calls.length).toBe(1);
     done();
-})
-
-/*
-    test('just make it run, lol', done => {
-    const mockUse = jest.fn();
-    const mockApp = {
-            use: mockUse,
-        }
-    express.mockImplementation(() => {
-        return mockApp;
-    })
-
-    const app = getApp()
-    expect(app).toEqual(mockApp)
-    expect(mockUse.mock.calls.length).toBe(4)
-    expect(mockUse.mock.calls[0][0]).toBe('bogus')
-    expect(getUserRouter.mock.calls.length).toBe(1)
-    expect(getListItemRouter.mock.calls.length).toBe(1)
-
-    done()
-})
-
-*/
+});
